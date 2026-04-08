@@ -45,7 +45,7 @@
     "prepack": "node ./scripts/clean.mjs dist && tsc -p tsconfig.types.json && tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && node ./scripts/postbuild.mjs",
     "build": "node ./scripts/clean.mjs dist && tsc -p tsconfig.types.json && tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && node ./scripts/postbuild.mjs",
     "build:test": "node ./scripts/clean.mjs dist/test && tsc -p tsconfig.test.json",
-    "test": "node ./scripts/clean.mjs dist/test && tsc -p tsconfig.test.json && node --test --test-isolation=none dist/test/test/**/*.test.js"
+    "test": "node ./scripts/clean.mjs dist/test && tsc -p tsconfig.test.json && node --test dist/test/test/**/*.test.js"
   },
   "devDependencies": {
     "@types/node": "^24.6.1",
