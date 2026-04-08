@@ -1,0 +1,54 @@
+{
+  "name": "jerry",
+  "version": "0.1.0",
+  "description": "A modern, typed HTTP client for browser, Node.js, and CLI runtimes.",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marshell-dev/jerry.git"
+  },
+  "homepage": "https://github.com/marshell-dev/jerry#readme",
+  "bugs": {
+    "url": "https://github.com/marshell-dev/jerry/issues"
+  },
+  "packageManager": "bun@1.3.9",
+  "keywords": [
+    "http",
+    "client",
+    "fetch",
+    "axios",
+    "typescript"
+  ],
+  "sideEffects": false,
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "examples"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "clean": "node ./scripts/clean.mjs dist",
+    "prepare": "node ./scripts/clean.mjs dist && tsc -p tsconfig.types.json && tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && node ./scripts/postbuild.mjs",
+    "prepack": "node ./scripts/clean.mjs dist && tsc -p tsconfig.types.json && tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && node ./scripts/postbuild.mjs",
+    "build": "node ./scripts/clean.mjs dist && tsc -p tsconfig.types.json && tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && node ./scripts/postbuild.mjs",
+    "build:test": "node ./scripts/clean.mjs dist/test && tsc -p tsconfig.test.json",
+    "test": "node ./scripts/clean.mjs dist/test && tsc -p tsconfig.test.json && node --test --test-isolation=none dist/test/test/**/*.test.js"
+  },
+  "devDependencies": {
+    "@types/node": "^24.6.1",
+    "typescript": "^5.9.3"
+  }
+}
